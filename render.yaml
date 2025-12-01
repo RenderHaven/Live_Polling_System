@@ -1,6 +1,6 @@
 services:
   # ============================
-  # BACKEND (Node.js + Socket.io)
+  # BACKEND (Node + Socket.io)
   # ============================
   - type: web
     name: poll-backend
@@ -15,23 +15,21 @@ services:
         value: 4000
 
   # ============================
-  # FRONTEND (React - static)
+  # FRONTEND (Create React App)
   # ============================
   - type: web
     name: poll-frontend
     runtime: static
     rootDir: frontend
     buildCommand: "npm install && npm run build"
-    staticPublishPath: dist
+    staticPublishPath: build # 🔥 FIXED
     autoDeploy: true
 
     routes:
-      # Forward API requests to backend
       - type: rewrite
         source: /api/*
         destination: https://poll-backend.onrender.com/api/*
 
-      # Forward socket.io to backend
       - type: rewrite
         source: /socket.io/*
         destination: https://poll-backend.onrender.com/socket.io/*

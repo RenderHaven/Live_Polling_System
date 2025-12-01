@@ -1,8 +1,10 @@
-import io from 'socket.io-client';
+import { io } from "socket.io-client";
 
-const SOCKET_URL = process.env.REACT_APP_SOCKET_URL || 'http://localhost:4000';
+const SOCKET_URL = window.location.origin;   // always frontend domain
 
 export const socket = io(SOCKET_URL, {
+  path: "/socket.io",             // 🔥 REQUIRED FOR RENDER
+  transports: ["websocket"],      // 🔥 WebSocket only (fast & stable)
   autoConnect: true,
   reconnection: true,
   reconnectionDelay: 1000,

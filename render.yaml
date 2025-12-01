@@ -15,21 +15,22 @@ services:
         value: 4000
 
   # -------------------------------
-  # FRONTEND: React (Vite)
+  # FRONTEND: Static Site (React)
   # -------------------------------
-  - type: static
+  - type: static_site # 🔥 FIXED (was: static)
     name: poll-frontend
     rootDir: frontend
     buildCommand: "npm install && npm run build"
     staticPublishPath: "dist"
     autoDeploy: true
 
-    # 🔥 IMPORTANT: Rewrite rules to forward /api & Socket.io traffic to backend
     routes:
+      # API rewrite → backend
       - type: rewrite
         source: "/api/(.*)"
         destination: "https://poll-backend.onrender.com/api/$1"
 
+      # Socket.io rewrite → backend
       - type: rewrite
         source: "/socket.io/(.*)"
         destination: "https://poll-backend.onrender.com/socket.io/$1"

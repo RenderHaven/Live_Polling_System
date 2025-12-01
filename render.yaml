@@ -1,10 +1,10 @@
 services:
-  # -------------------------------
-  # BACKEND: Node.js + Socket.io
-  # -------------------------------
+  # ============================
+  # BACKEND (Node.js + Socket.io)
+  # ============================
   - type: web
     name: poll-backend
-    env: node
+    runtime: node
     rootDir: backend
     buildCommand: "npm install"
     startCommand: "node server.js"
@@ -14,23 +14,24 @@ services:
       - key: PORT
         value: 4000
 
-  # -------------------------------
-  # FRONTEND: Static Site (React)
-  # -------------------------------
-  - type: static_site # 🔥 FIXED (was: static)
+  # ============================
+  # FRONTEND (React - static)
+  # ============================
+  - type: web
     name: poll-frontend
+    runtime: static
     rootDir: frontend
     buildCommand: "npm install && npm run build"
-    staticPublishPath: "dist"
+    staticPublishPath: dist
     autoDeploy: true
 
     routes:
-      # API rewrite → backend
+      # Forward API requests to backend
       - type: rewrite
-        source: "/api/(.*)"
-        destination: "https://poll-backend.onrender.com/api/$1"
+        source: /api/*
+        destination: https://poll-backend.onrender.com/api/*
 
-      # Socket.io rewrite → backend
+      # Forward socket.io to backend
       - type: rewrite
-        source: "/socket.io/(.*)"
-        destination: "https://poll-backend.onrender.com/socket.io/$1"
+        source: /socket.io/*
+        destination: https://poll-backend.onrender.com/socket.io/*

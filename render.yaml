@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: poll-backend
+    env: node
+    rootDir: backend
+    buildCommand: "npm install"
+    startCommand: "npm start"
+    plan: free
+
+  - type: static
+    name: poll-frontend
+    rootDir: frontend
+    buildCommand: "npm install && npm run build"
+    staticPublishPath: "build"
+    routes:
+      - type: rewrite
+        source: "/api/(.*)"
+        destination: "https://poll-backend.onrender.com/api/$1"
+      - type: rewrite
+        source: "/socket.io/(.*)"
+        destination: "https://poll-backend.onrender.com/socket.io/$1"

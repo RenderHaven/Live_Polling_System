@@ -1,0 +1,641 @@
+/* ============================================================
+   CREATE QUESTION (Teacher)
+============================================================ */
+.create-card {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 20px;
+  /* box-shadow: 0 12px 35px rgba(0,0,0,0.08); */
+}
+
+.create-card h2 {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.light-subtitle {
+  margin: 0 0 16px 0;
+  font-size: 14px;
+  color: #6b6b6b;
+}
+
+.label-box{
+  margin-top: 16px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  /* border: black solid; */
+}
+
+.label {
+  font-weight: 600;
+  display: block;
+}
+
+.question-input {
+  width: 100%;
+  margin-top: 10px;
+  padding: 18px;
+  background: #efeff3;
+  border-radius: 14px;
+  border: none;
+  font-size: 16px;
+  height: 110px;
+  resize: none;
+}
+
+.option-row {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.num {
+  background: #6a4ff1;
+  color: white;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+}
+
+.opt-input {
+  flex: 1;
+  padding: 14px;
+  background: #efeff3;
+  border-radius: 14px;
+  border: none;
+}
+
+.add-option-btn {
+  margin-top: 20px;
+  background: transparent;
+  border: none;
+  color: #5a3ffb;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.ask-btn {
+  width: 100%;
+  margin-top: 25px;
+  padding: 16px;
+  background: #5a3ffb;
+  color: white;
+  border-radius: 16px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ============================================================
+   NUMBER ICON
+============================================================ */
+.num-icon {
+  width: 34px;
+  height: 34px;
+  background: #7d5cff;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+/* ============================================================
+   TOP ROW (Question + Timer)
+============================================================ */
+.qa-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.qa-title {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.qa-timer {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.time-red {
+  color: #e53935;
+}
+
+/* ============================================================
+   GRADIENT QUESTION HEADER BOX
+============================================================ */
+.qa-question-box {
+  background: linear-gradient(to right, #4b4b4b, #6b6b6b);
+  padding: 18px 20px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 20px;
+}
+
+/* ============================================================
+   QUESTION ACTIVE (Student Answer UI)
+============================================================ */
+.qa-container {
+  padding: 20px;
+}
+
+.qa-box {
+  border: #586bff solid 1px;
+  border-radius: 12px;
+}
+
+
+/* Option Rows */
+.qa-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #f7f7f7;
+  padding: 16px 20px;
+  border-radius: 12px;
+  border: 2px solid transparent;
+  margin-bottom: 12px;
+  margin-left: 15px;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.qa-option:hover {
+  background: #f0f0ff;
+}
+
+.qa-option.selected {
+  border-color: #7d5cff;
+  background: #faf7ff;
+}
+
+.qa-option span {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* Submit Button */
+.qa-submit-btn {
+  width: 160px;
+  padding: 14px;
+  border-radius: 30px;
+  background: linear-gradient(to right, #7d5cff, #586bff);
+  border: none;
+  color: white;
+  font-weight: 600;
+  font-size: 18px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.qa-submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ============================================================
+   QUESTION VIEW (Live Result UI)
+============================================================ */
+.qv-container {
+  padding: 20px;
+}
+
+.qv-box {
+  border: #586bff solid 1px;
+  border-radius: 12px;
+}
+
+.qv-results {
+  margin: 15px;
+
+}
+
+/* Each option result row */
+.qv-item {
+  display: grid;
+  grid-template-columns: 40px 1fr 50% 60px;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 12px;
+  margin-bottom: 12px;
+  background: #f7f7f7;
+  border-radius: 12px;
+  border: black;
+}
+
+/* Text label */
+.qv-text {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* Bar container */
+.qv-bar {
+  height: 14px;
+  background: #e9e9e9;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Filled percentage bar */
+.qv-fill {
+  height: 100%;
+  background: #7d5cff;
+  border-radius: 8px;
+}
+
+/* Percentage text */
+.qv-pct {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* ============================================================
+   POLL HISTORY
+============================================================ */
+.ph-container {
+  background: white;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 6px 25px rgba(0,0,0,0.06);
+}
+
+.ph-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ph-back-btn {
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.ph-block {
+  margin-top: 30px;
+  padding: 18px;
+  border-radius: 14px;
+  background: #fafafa;
+  border: 1px solid #e5e5e5;
+}
+
+/* ============================================================
+   CHAT POPUP
+============================================================ */
+.chat-float-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #7d5cff;
+  border: none;
+  padding: 14px 18px;
+  border-radius: 50%;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Popup container */
+.chat-popup {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 330px;
+  height: 500px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.18);
+  overflow: hidden;
+}
+
+/* Tabs */
+.cp-tabs {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 12px;
+}
+
+.cp-tabs button {
+  background: none;
+  border: none;
+  margin-right: 12px;
+  padding-bottom: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.cp-tabs .active {
+  border-bottom: 2px solid #7d5cff;
+  font-weight: 600;
+}
+
+.close-btn {
+  margin-left: auto;
+  font-size: 18px;
+}
+
+/* Messages */
+.cp-messages {
+  height: 370px;
+  overflow-y: auto;
+  padding: 14px;
+}
+
+.cp-msg-row {
+  margin-bottom: 14px;
+}
+
+.cp-msg-row.left { text-align: left; }
+.cp-msg-row.right { text-align: right; }
+
+.cp-name {
+  font-size: 12px;
+  margin-bottom: 3px;
+  color: #6b6b6b;
+}
+
+/* Message bubbles */
+.cp-msg {
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 14px;
+  max-width: 75%;
+}
+
+.cp-msg.other {
+  background: #000;
+  color: white;
+}
+
+.cp-msg.self {
+  background: #7d5cff;
+  color: white;
+}
+
+/* Input row */
+.cp-input-row {
+  display: flex;
+  border-top: 1px solid #e5e7eb;
+  padding: 10px;
+  gap: 8px;
+}
+
+.cp-input-row input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+.cp-input-row button {
+  background: #7d5cff;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: none;
+}
+
+/* Participants */
+.cp-participants {
+  padding: 14px;
+}
+
+.cp-p-header {
+  display: grid;
+  grid-template-columns: 1fr 80px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.cp-p-row {
+  display: grid;
+  grid-template-columns: 1fr 80px;
+  padding: 10px 0;
+  align-items: center;
+}
+
+.kick-btn {
+  background: none;
+  border: none;
+  color: #0070f3;
+  cursor: pointer;
+}
+
+
+/* ================= STUDENT UI ================= */
+
+/* Name Input Screen */
+.student-name-screen {
+  max-width: 520px;
+  margin: 40px auto;
+  text-align: center;
+  background: #ffffff;
+  padding: 40px 32px;
+  border-radius: 22px;
+}
+
+.badge {
+  display: inline-block;
+  background: #5a3ffb;
+  color: #ffffff;
+  padding: 6px 14px;
+  border-radius: 14px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.page-title {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.page-title strong {
+  color: #000;
+}
+
+.page-subtext {
+  font-size: 14px;
+  color: #666;
+  max-width: 460px;
+  margin: 0 auto 25px auto;
+  line-height: 22px;
+}
+
+.student-name-screen .label {
+  text-align: left;
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.student-name-screen .question-input {
+  width: 100%;
+  padding: 16px;
+  height: 50px;
+  font-size: 16px;
+  border-radius: 12px;
+  background: #f3f3f6;
+  border: none;
+  margin-bottom: 22px;
+}
+
+.student-name-screen .ask-btn {
+  width: 100%;
+  max-width: 150px;
+  padding: 14px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #6a4ff1, #8b6cff);
+  color: white;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* ================= WAITING SCREEN ================= */
+
+.waiting-screen {
+  margin-top: 80px;
+  text-align: center;
+}
+
+.loader-circle {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #ddd;
+  border-top-color: #6a4ff1;
+  border-radius: 50%;
+  margin: 40px auto;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.waiting-text {
+  font-size: 20px;
+  font-weight: 600;
+  color: #222;
+  margin-top: 10px;
+}
+
+/* ================= ACTIVE QUESTION (STUDENT) ================= */
+
+.student-screen {
+  max-width: 580px;
+  margin: 30px auto;
+  background: white;
+  padding: 28px 24px;
+  border-radius: 20px;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+  text-align: center;
+}
+
+.student-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+.student-option {
+  background: #fafafe;
+  padding: 15px 18px;
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.student-option input[type="radio"] {
+  transform: scale(1.3);
+  accent-color: #6a4ff1;
+}
+
+.student-submit {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(90deg, #6a4ff1, #8b6cff);
+  color: white;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 20px;
+}
+
+/* ================= ANSWER RESULT (OPTIONAL IF USED) ================= */
+
+.student-result-item {
+  padding: 15px 18px;
+  background: #ffffff;
+  border-radius: 14px;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+
+.correct-msg {
+  color: #1a7f37;
+  font-weight: 700;
+  margin-top: 15px;
+  font-size: 17px;
+}
+
+.wrong-msg {
+  color: #d32f2f;
+  font-weight: 700;
+  margin-top: 15px;
+  font-size: 17px;
+}
+
+/* ============================================================
+   WAIT SCREEN
+============================================================ */
+.wait-text {
+  font-size: 18px;
+  margin-top: 40px;
+  text-align: center;
+}
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+@media (max-width: 640px) {
+  .teacher-container,
+  .student-container {
+    padding: 20px 14px;
+  }
+
+  .chat-popup {
+    right: 10px;
+    width: calc(100% - 20px);
+  }
+}
+
